@@ -13,3 +13,4 @@ Program usage: python3 main.py
 
 TODO:
 Should also work on cluster
+OpenMP for models, years?
