@@ -41,6 +41,11 @@ class NMME():
             #     X : Longitude (longitude)
             #
             self.m = int(self._date_to_num(forecast_reference_time))
+            
+            # check whether forecastMonths are in Lead of dataset
+            assert set(forecastMonths).issubset(self.nc.L.values), f"Forecast months not found! Only possible forecastmonts are {self.nc.L.values}"
+            
+            # Get requested data and save data as netcdf
             self.ds = self.nc.sel(S=self.m,L=forecastMonths)
             self.forecast_time = [self._num_to_date(self.m + i) for i in (forecastMonths)]
             self.ds = self.ds.rename({'X': 'longitude','Y': 'latitude'})
