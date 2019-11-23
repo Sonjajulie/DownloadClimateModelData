@@ -42,7 +42,9 @@ class NMME():
             #
             self.m = int(self._date_to_num(forecast_reference_time))
             # check whether forecast_reference_time is in dataset
-            assert self.m  in (self.nc.S.values), f"Forecast months not found! Only possible forecast months are {self.nc.S.values}"
+            assert self.m  in (self.nc.S.values),  f"Forecast reference time not found ({forecast_reference_time})!\
+                    Only possible forecast refernce times are\
+                    {list(map(lambda x: (self._num_to_date(x)).strftime('%Y-%m-%d'),self.nc.S.values))}"
             
             # check whether forecastMonths are in dataset
             assert set(forecastMonths).issubset(self.nc.L.values), f"Forecast months not found! Only possible forecast months are {self.nc.L.values}"

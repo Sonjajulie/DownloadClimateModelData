@@ -12,7 +12,7 @@ import sys
 if __name__ == '__main__':
     URL_PREFIX = "http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME"
 
-start_year=1982
+start_year=1981
 year = int(sys.argv[1])
 for month in range(3,9):
     output_label = f"/home/sonja/Documents/NASA/NASA-Models/output/model_{month}_{year+start_year}"
