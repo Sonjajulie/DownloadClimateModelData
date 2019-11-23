@@ -8,6 +8,7 @@ Created on Thu Nov 21 09:45:58 2019
 
 from datetime import datetime
 import xarray as xa
+import sys
 
 class NMME():
     """ class to download data from NMME models"""
@@ -25,37 +26,41 @@ class NMME():
         forecast lead (forecast_lead) and months 
         (forecast_months) is specified by user
         """
-        print(f"Access {self.var} from model {self.model} via {self.fullURL}")
-        with xa.open_dataset(self.fullURL, decode_times=False)  as self.nc:
-            #  Check for variable in dataset 
-            assert self.var in (self.nc.variables),"Variable not found!"
+        print(f"Access {self.var} from model {self.model} via {self.fullURL}\n")
+        try:
+            with xa.open_dataset(self.fullURL, decode_times=False)  as self.nc:
+                #  Check for variable in dataset 
+                assert self.var in (self.nc.variables),f"Variable {self.var} not found! Possible variables:\
+                                                       self.nc.variables "
+                # netCDF variable of interest is: 
+                #
+                # float var(S, M, L, Y, X)
+                #   where
+                #     S : Forecast Start Time (forecast_reference_time)
+                #     M : Ensemble Member (realization)
+                #     L : Lead (forecast_period)
+                #     Y : Latitude (latitude)
+                #     X : Longitude (longitude)
+                #
+                self.m = int(self._date_to_num(forecast_reference_time))
+                # check whether forecast_reference_time is in dataset
+                assert self.m  in (self.nc.S.values),  f"Forecast reference time not found ({forecast_reference_time})!\
+                        Only possible forecast refernce times are\
+                        {list(map(lambda x: (self._num_to_date(x)).strftime('%Y-%m-%d'),self.nc.S.values))}"
+                # check whether forecastMonths are in dataset
+                assert set(forecastMonths).issubset(self.nc.L.values), f"Forecast months not found!\
+                        Possible forecast months are {self.nc.L.values}"
+                
+                # Get requested data and save data as netcdf
+                self.ds = self.nc.sel(S=self.m,L=forecastMonths)
+                self.forecast_time = [self._num_to_date(self.m + i) for i in (forecastMonths)]
+                self.ds = self.ds.rename({'X': 'longitude','Y': 'latitude'})
+                self.ds = (self.ds.assign_coords(L=self.forecast_time))
+                self.ds.to_netcdf(path=output_label, engine='scipy')
+        except OSError:
+            print(f"\nWebsite {self.fullURL} not found!\n")
+            sys.exit(-1)
             
-            # netCDF variable of interest is: 
-            #
-            # float var(S, M, L, Y, X)
-            #   where
-            #     S : Forecast Start Time (forecast_reference_time)
-            #     M : Ensemble Member (realization)
-            #     L : Lead (forecast_period)
-            #     Y : Latitude (latitude)
-            #     X : Longitude (longitude)
-            #
-            self.m = int(self._date_to_num(forecast_reference_time))
-            # check whether forecast_reference_time is in dataset
-            assert self.m  in (self.nc.S.values),  f"Forecast reference time not found ({forecast_reference_time})!\
-                    Only possible forecast refernce times are\
-                    {list(map(lambda x: (self._num_to_date(x)).strftime('%Y-%m-%d'),self.nc.S.values))}"
-            
-            # check whether forecastMonths are in dataset
-            assert set(forecastMonths).issubset(self.nc.L.values), f"Forecast months not found! Only possible forecast months are {self.nc.L.values}"
-            
-            # Get requested data and save data as netcdf
-            self.ds = self.nc.sel(S=self.m,L=forecastMonths)
-            self.forecast_time = [self._num_to_date(self.m + i) for i in (forecastMonths)]
-            self.ds = self.ds.rename({'X': 'longitude','Y': 'latitude'})
-            self.ds = (self.ds.assign_coords(L=self.forecast_time))
-            self.ds.to_netcdf(path=output_label, engine='scipy')
-
     def _num_to_date(self,nMonths):
         """ Helper-function to convert number to date"""
         self.nMonths = int(nMonths)
