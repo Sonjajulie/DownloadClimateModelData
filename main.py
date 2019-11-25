@@ -30,7 +30,7 @@ if __name__ == '__main__':
             print(f"\nDownload data for forecast_reference_time: {forecast_reference_time} and lead: {forecastMonths}")
             # iterate over all nasa models
             for model,url in nasa_dict.items():
-                var = "preec"
+                var = "prec"
                 output_label_full = f"{output_label}_{model}_{var}.nc"
                 nasa = NMME(model,URL_PREFIX+url,var)
                 nasa.download_data(output_label_full,forecast_reference_time,forecastMonths)
