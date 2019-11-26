@@ -22,8 +22,10 @@ for month in range(3,9):
     # Here: sep, oct, dec
     forecastMonths = [0.5+i + 9-month for i in range(3)]
     #dictionary of all possible NASA models (key: model name, value: model url adress)
+    # https://gmao.gsfc.nasa.gov/multi-partner/NMME/
     nasa_dict = {
               "NASA-GMAO" :        "/.NASA-GMAO/.MONTHLY",
+              # Modified version of the NASA coupled model
               "NASA-GMAO-062012" : "/.NASA-GMAO-062012/.MONTHLY",
               "NASA-GEOSS2S":      "/.NASA-GEOSS2S/.HINDCAST/.MONTHLY"
             }
