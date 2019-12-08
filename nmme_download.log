@@ -1,0 +1,49 @@
+INFO:root:Start NMME download
+INFO:__main__:
+Download data for forecast_reference_time: 1981-03-01 00:00:00 and lead: [6.5, 7.5, 8.5]
+INFO:download_NMME_data:Access prec from model NASA-GMAO via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GMAO-062012 via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO-062012/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GEOSS2S via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GEOSS2S/.HINDCAST/.MONTHLY/.prec/dods
+
+INFO:__main__:
+Download data for forecast_reference_time: 1981-04-01 00:00:00 and lead: [5.5, 6.5, 7.5]
+INFO:download_NMME_data:Access prec from model NASA-GMAO via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GMAO-062012 via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO-062012/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GEOSS2S via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GEOSS2S/.HINDCAST/.MONTHLY/.prec/dods
+
+INFO:__main__:
+Download data for forecast_reference_time: 1981-05-01 00:00:00 and lead: [4.5, 5.5, 6.5]
+INFO:download_NMME_data:Access prec from model NASA-GMAO via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GMAO-062012 via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO-062012/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GEOSS2S via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GEOSS2S/.HINDCAST/.MONTHLY/.prec/dods
+
+INFO:__main__:
+Download data for forecast_reference_time: 1981-06-01 00:00:00 and lead: [3.5, 4.5, 5.5]
+INFO:download_NMME_data:Access prec from model NASA-GMAO via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GMAO-062012 via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO-062012/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GEOSS2S via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GEOSS2S/.HINDCAST/.MONTHLY/.prec/dods
+
+INFO:__main__:
+Download data for forecast_reference_time: 1981-07-01 00:00:00 and lead: [2.5, 3.5, 4.5]
+INFO:download_NMME_data:Access prec from model NASA-GMAO via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GMAO-062012 via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO-062012/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GEOSS2S via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GEOSS2S/.HINDCAST/.MONTHLY/.prec/dods
+
+INFO:__main__:
+Download data for forecast_reference_time: 1981-08-01 00:00:00 and lead: [1.5, 2.5, 3.5]
+INFO:download_NMME_data:Access prec from model NASA-GMAO via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GMAO-062012 via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GMAO-062012/.MONTHLY/.prec/dods
+
+INFO:download_NMME_data:Access prec from model NASA-GEOSS2S via http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/.NASA-GEOSS2S/.HINDCAST/.MONTHLY/.prec/dods
+
