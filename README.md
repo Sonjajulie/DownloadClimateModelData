@@ -13,7 +13,7 @@ Program usage: python3 main.py
 
 Annotations: 
 
-The forecast months are given by numbers (line 50 in main.py), whereas the the forecast reference date ist fiven by a datetimeobject (line 47 in main.py).  Thos way, if you want to forecast the date April 1990 from January 1990, you have to change the code in the following way:
+The forecast months are given by numbers (line 50 in main.py), whereas the the forecast reference date ist fiven by a datetimeobject (line 47 in main.py).  This way, if you want to forecast the date April 1990 from January 1990, you have to change the code in the following way:
 
 ...
 
