@@ -30,5 +30,4 @@ The forecast months are given by numbers (line 50 in main.py), whereas the the f
 The nasa_dict is a dictionary and provides the models which are used to download the data.
 
 TODO:
-Should also work on NCAR cluster
 OpenMP for models, years?
