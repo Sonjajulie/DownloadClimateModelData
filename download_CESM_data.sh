@@ -42,6 +42,7 @@ foreach i (`seq 1 1 35`)
     # set file paths for output, which will be used to select variable
     set file1_t = $file_path_out/$var_out.$pad_i.1.nc
     set file2_t = $file_path_out/$var_out.$pad_i.2.nc
+    set file2_m = $file_path_out/$var_out.$pad_i.2.m.nc
     # set file paths for output which will be used to select season
     set file1 = $file_path_out/$var_out.$pad_i.$year_start-200512.nc
     set file2 = $file_path_out/$var_out.$pad_i.200601-$year_mid.nc
@@ -49,23 +50,26 @@ foreach i (`seq 1 1 35`)
     cdo selvar,$var $file_path_in/b.e11.B20TRC5CNBDRD.f09_g16.$pad_i.$stream.$var.$year_start-200512.nc $file1_t
     cdo selvar,$var $file_path_in/b.e11.BRCP85C5CNBDRD.f09_g16.$pad_i.$stream.$var.200601-$year_mid.nc $file2_t
     #Download only Sept-Nov data
-    cdo seasmean -selmon,$argv[4],$argv[5],$argv[6] $file1_t $file1
-    cdo seasmean -selmon,$argv[4],$argv[5],$argv[6] $file2_t $file2
+    cdo selmon,$argv[4],$argv[5],$argv[6] $file1_t $file1
+    cdo selmon,$argv[4],$argv[5],$argv[6] $file2_t $file2
 
     if ($i < 34) then
         # set third file for the last time range 208101-210012
         set file3 = $file_path_out/icefrac.$pad_i.208101-210012.nc
         set file3_t = $file_path_out/fsno.$pad_i.3.nc
+        set file3_m = $file_path_out/$var_out.$pad_i.3.m.nc
         cdo selvar,$var $file_path_in/b.e11.BRCP85C5CNBDRD.f09_g16.$pad_i.$stream.$var.208101-210012.nc $file3_t
-        cdo seasmean -selmon,$argv[4],$argv[5],$argv[6] $file3_t $file3
+        cdo selmon,$argv[4],$argv[5],$argv[6] $file3_t $file3
         # merge to one file 
-        cdo mergetime $file1 $file2 $file3 $file_path_out/$var_out.$pad_i.$year_start-210012.nc
+        cdo mergetime $file1 $file2 $file3 $file3_m
+        cdo seasmean $file3_m $file_path_out/$var_out.$pad_i.$year_start-210012.nc
         # remove other files
-        rm $file1 $file2 $file3 $file1_t $file2_t $file3_t
+        rm $file1 $file2 $file3 $file1_t $file2_t $file3_t $file3_m
     else
         # merge to one file 
-        cdo mergetime $file1 $file2  $file_path_out/$var_out.$pad_i.192001-210012.nc
+        cdo mergetime $file1 $file2  $file3_m
+        cdo seasmean $file3_m $file_path_out/$var_out.$pad_i.192001-210012.nc
         # remove other files
-        rm $file1 $file2 $file1_t $file2_t
+        rm $file1 $file2 $file1_t $file2_t $file3_m
     endif
 end
